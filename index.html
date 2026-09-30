@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Wo ist Daniel?</title>
+  <meta name="description" content="Daniels Marschplan für den Berlin-Marsch am 3. Oktober 2026 – wann ist Daniel wo auf den 50 km?">
+  <meta property="og:title" content="Wo ist Daniel? – Berlin-Marsch 2026">
+  <meta property="og:description" content="50 km, Startnummer 10. Such dir eine Uhrzeit aus und sieh auf der Karte, wo du Daniel treffen kannst.">
+  <meta name="theme-color" content="#efe3c6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥾</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="cartouche">
+    <p class="cartouche__kicker">Berlin-Marsch · 3. Oktober 2026 · 50 km</p>
+    <h1>Wo ist Daniel?</h1>
+    <p class="cartouche__sub">Wanderpass Nr. <span class="bib">10</span></p>
+  </header>
+
+  <div id="banner" class="banner" hidden></div>
+
+  <main class="layout">
+    <section class="map-wrap" aria-label="Karte der Strecke">
+      <div id="map"></div>
+    </section>
+
+    <aside class="pass" aria-label="Wanderpass">
+      <div class="pass__clock">
+        <div class="clock">
+          <span id="clock-time" class="clock__time">6:40</span>
+          <span class="clock__unit">Uhr <em>laut Plan</em></span>
+        </div>
+        <div id="clock-km" class="clock__km">km 0,0 von 50,1</div>
+      </div>
+
+      <div class="slider">
+        <label for="time" class="visually-hidden">Uhrzeit wählen</label>
+        <input id="time" type="range" min="0" max="661" step="1" value="0">
+        <div id="ticks" class="slider__ticks" aria-hidden="true"></div>
+      </div>
+
+      <div class="actions">
+        <button id="btn-now" class="btn" type="button">Jetzt</button>
+        <button id="btn-play" class="btn btn--primary" type="button">▶ Tag abspielen</button>
+      </div>
+
+      <p id="status" class="status" aria-live="polite"></p>
+      <p id="corridor" class="corridor-note"></p>
+
+      <h2 class="pass__h">Stempel</h2>
+      <ol id="stamps" class="stamps"></ol>
+
+      <h2 class="pass__h">Treffpunkte</h2>
+      <table class="timetable">
+        <thead><tr><th>Ort</th><th>laut Plan</th><th>Zeitfenster</th></tr></thead>
+        <tbody id="timetable"></tbody>
+      </table>
+      <p class="hint">Tipp: Auf die Strecke, einen VP oder ein ✦ tippen – dann siehst du, wann Daniel dort vorbeikommt.</p>
+
+      <details class="fineprint">
+        <summary>Wie wird das berechnet?</summary>
+        <p>Das ist ein <strong>Plan, kein Live-Tracking</strong>. Start um 6:40 Uhr, konstant 5 km/h, an jedem Verpflegungspunkt (VP) genau 15 Minuten Pause. Kilometer werden entlang des offiziellen GPX-Tracks gemessen.</p>
+        <p>Der schraffierte <strong>Korridor</strong> zeigt, wo Daniel wahrscheinlich ist: ± 10 % der seit dem Start vergangenen Zeit. Morgens ist er schmal, nachmittags breit. Im Zweifel: lieber etwas früher da sein.</p>
+      </details>
+    </aside>
+  </main>
+
+  <footer class="foot">Karte: © OpenStreetMap-Mitwirkende, SRTM · Kartendarstellung: © OpenTopoMap (CC-BY-SA)</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="assets/route.js"></script>
+  <script src="assets/plan.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
